@@ -17,8 +17,8 @@ driver = webdriver.Chrome('/Users/rahulmathur/.wdm/drivers/chromedriver/mac64_m1
 driver.get("https://www.linkedin.com/")
 
 #enter login credentials before running script
-# id = "xxx@xyz.com"
-# pw = "qwerty"
+id = "xxx@xyz.com"
+pw = "qwerty"
 
 
 # selects login field and enters credentials
