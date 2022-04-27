@@ -20,8 +20,6 @@ driver.get("https://www.linkedin.com/")
 # id = "xxx@xyz.com"
 # pw = "qwerty"
 
-id = "mathur.rahul.2501@gmail.com"
-pw = "atul2312"
 
 # selects login field and enters credentials
 sessionkey = "session_key"
