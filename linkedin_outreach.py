@@ -45,10 +45,28 @@ enterpw.send_keys(pw + Keys.ENTER)
 print("logged into LinkedIn")
 
 profiles = [                                                #paste url of linkedin profiles you'd like to send messages to in this array
-  'https://www.linkedin.com/in/hamir-shekhawat-9a45b311a/',
-  'https://www.linkedin.com/in/hamir-shekhawat-9a45b311a/',
-  'https://www.linkedin.com/in/hamir-shekhawat-9a45b311a/',
-
+  'https://www.linkedin.com/in/siddhant-patni/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BmVJ%2BC08zQwi1JuQ9mXKoMA%3D%3D',
+  'https://www.linkedin.com/in/sarita-aggarwal-b068a31b8/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BmVJ%2BC08zQwi1JuQ9mXKoMA%3D%3D',
+  'https://www.linkedin.com/in/shreya-shrivastava-2607/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BmVJ%2BC08zQwi1JuQ9mXKoMA%3D%3D',
+  'https://www.linkedin.com/in/kedar-kanekar-360709154/',
+  'https://www.linkedin.com/in/aakritinath/',
+  'https://www.linkedin.com/in/vigneshwaran-anandaraj-788881117/',
+  'https://www.linkedin.com/in/karthik-daroor-9193a6a/',
+  'https://www.linkedin.com/in/madhulika-tyagi-17821426/',
+  'https://www.linkedin.com/in/gaurav-tiwari-49ab03135/',
+  'https://www.linkedin.com/in/waseemibnyousefcm/',
+  'https://www.linkedin.com/in/kirti-mendirata-aab44a143/',
+  'https://www.linkedin.com/in/dr-mayank-patel-847741157/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BMVLrdTVETGGqoJox3UCLrA%3D%3D',
+  'https://www.linkedin.com/in/shrutty-she-her-395b12157/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BMVLrdTVETGGqoJox3UCLrA%3D%3D',
+  'https://www.linkedin.com/in/pravina-jadhav-29374412a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3Byg36vB6JTbalecorFdym8g%3D%3D',
+  'https://www.linkedin.com/in/anshuman-neralla-23892b20/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3Byg36vB6JTbalecorFdym8g%3D%3D',
+  'https://www.linkedin.com/in/nandhinianand/',
+  'https://www.linkedin.com/in/anisha-kashwani-61005116/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BEhFzy1jhTlStUOrJ%2F%2FGXLA%3D%3D',
+  'https://www.linkedin.com/in/kajal-jain04/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BEhFzy1jhTlStUOrJ%2F%2FGXLA%3D%3D',
+  'https://www.linkedin.com/in/editor-harshyadav/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BEhFzy1jhTlStUOrJ%2F%2FGXLA%3D%3D',
+  'https://www.linkedin.com/in/deepi-dhiman-705802190/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BEhFzy1jhTlStUOrJ%2F%2FGXLA%3D%3D',
+  'https://www.linkedin.com/in/twisha-ahuja-a5a80243/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BEhFzy1jhTlStUOrJ%2F%2FGXLA%3D%3D',
+  'https://www.linkedin.com/in/humaida-khan/?lipi=urn%3Ali%3Apage%3Ad_flagship3_people_connections%3BEhFzy1jhTlStUOrJ%2F%2FGXLA%3D%3D',
 ]
 print("fetching profiles")
 

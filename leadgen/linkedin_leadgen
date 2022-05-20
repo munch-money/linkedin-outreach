@@ -1,5 +1,6 @@
 # import webdriver
 from distutils.command.clean import clean
+from distutils.log import info
 from http.server import executable
 from unicodedata import name
 # from tkinter import Y
@@ -13,8 +14,7 @@ from selenium.webdriver.support.relative_locator import locate_with
 # import html5lib
 import requests 
 import time
-
-from contactsheet import addtospreadsheet
+from userinfo import *
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -60,10 +60,14 @@ for i in posts:
     dirtyhrefs.append(i.get_attribute("href"))
 # print(dirtyhrefs)
 cleanlist = []
-for i in dirtyhrefs: 
+for i in dirtyhrefs:
     if i not in cleanlist:
         cleanlist.append(i)
 print("The clean list is" + str(cleanlist))
+names = []
+links = []
+degrees = []
+captions = []
 
 for i in cleanlist: 
     driver.get(i)
@@ -74,10 +78,10 @@ for i in cleanlist:
     socialcntbtn.click()
     listlength = 'ul'
     listlengthvar = driver.find_element(by=By.CSS_SELECTOR, value=listlength)
-    names = []
-    links = []
-    degrees = []
-    captions = []
+    # names = []
+    # links = []
+    # degrees = []
+    # captions = []
     old_height = listlengthvar.rect["height"]
     old_height_str = str(listlengthvar.rect["height"])
     # print("Old height is", old_height)
@@ -125,18 +129,18 @@ for i in cleanlist:
             degrees.append(i.text)
     print(degrees)
     print("Count of degrees is ", len(degrees))
-    for i in captionlist: 
+    for i in captionlist:
         captions.append(i.text)
     print(captions)
     print("Count of captions is", len(captions))
     print("going to next post")
 
+userInfoDict = {}
+def addtodict(link, degrees, caption, name: str):
+        userInfoDict[name] = userinfo(link, degrees, caption)
 
-
-    
-    
-    
-
+map(addtodict, links, degrees, captions, names)
+print(userInfoDict)
 
 
 

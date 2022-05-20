@@ -9,7 +9,7 @@ from selenium.webdriver.support.relative_locator import locate_with
 # from selenium.webdriver.support.ui import WebDriverWait
 import time
 # import html5lib
-# import requests 
+# import requests
 from contactsheet import addtospreadsheet
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -18,15 +18,15 @@ from selenium.common.exceptions import NoSuchElementException
 from contactsheet import addtospreadsheet
 
 
-opts = ChromeOptions()
-opts.add_experimental_option("detach", True)
+# opts = ChromeOptions()
+# opts.add_experimental_option("detach", True)
 # opts.add_argument("window-size=1200x600")
 # driver = Chrome(chrome_options=opts)
 
 
-# op = webdriver.ChromeOptions()
-# op.add_argument('headless')
-# driver = webdriver.Chrome(options=op)
+op = webdriver.ChromeOptions()
+op.add_argument('headless')
+driver = webdriver.Chrome(options=op)
 
 print("initialising webdriver")
 # create webdriver object
@@ -35,7 +35,7 @@ print("initialising webdriver")
 # chrome_options = Options().chrome_options.add_experimental_option("detach", True)
 
 # driver = webdriver.Chrome(options=chrome_options)
-driver = webdriver.Chrome(options=opts, service=Service(ChromeDriverManager().install()))
+# driver = webdriver.Chrome(options=opts, service=Service(ChromeDriverManager().install()))
 # driver = webdriver.Chrome('/Users/rahulmathur/.wdm/drivers/chromedriver/mac64_m1/100.0.4896.60/chromedriver 2')
 # driver.set_window_size(1600,1600)
 driver.get("https://www.linkedin.com/")
@@ -44,7 +44,8 @@ driver.get("https://www.linkedin.com/")
 # id = "xxx@gmail.com"                  #edit login credentials before running script to login into your linkedin account
 # pw = "xxxxxx"
 
-id = "mathur.rahul.2501@gmail.com"                  #edit login credentials before running script to login into your linkedin account
+# edit login credentials before running script to login into your linkedin account
+id = "mathur.rahul.2501@gmail.com"
 pw = "youcanthackme"
 
 print("logging into linkedin")
@@ -53,7 +54,7 @@ sessionkey = "session_key"
 login = driver.find_element(by=By.NAME, value=sessionkey)
 login.send_keys(id)
 
-#select pw field and enter pw
+# select pw field and enter pw
 password = "session_password"
 enterpw = driver.find_element(by=By.NAME, value=password)
 enterpw.send_keys(pw + Keys.ENTER)
@@ -61,8 +62,7 @@ enterpw.send_keys(pw + Keys.ENTER)
 print("logged into LinkedIn")
 
 profiles = [
-# "https://www.linkedin.com/in/ACwAAA5iDpgBX-osbu8drUyDf8VDddJ__Nql1s8/",
-"https://www.linkedin.com/in/ACwAAARomYwBeJ4We5L0RFOFM2J5MpOUL4NkhlM/",
+    "https://www.linkedin.com/in/ACwAACkw1DYB4TAnpJIbp1TrsUt7qS3FIB7R-X8/",
 ]
 print('fetching profiles')
 
@@ -75,7 +75,7 @@ for i in profiles:
     fullname = driver.find_element(by=By.CSS_SELECTOR, value=nameelem).text
     firstname = fullname.partition(" ")[0]
     dispchecklink = '//span[text() = "Connect"]/ancestor::div[@role="button"]'
-    try: 
+    try:
         dispcheck = driver.find_element(by=By.XPATH, value=dispchecklink)
         driver.execute_script("arguments[0].click();", dispcheck)
         sendreqbtnloc = '//button[@aria-label = "Send now"]'
@@ -83,9 +83,29 @@ for i in profiles:
         sendreqbtn.click()
     except NoSuchElementException as Exception:
         print("Follow button does not show")
-        connectpath = '//span[text() = "Connect"]/ancestor::button'
-        connectbtn = driver.find_element(by=By.XPATH, value=connectpath)
-        driver.execute_script("arguments[0].click();", connectbtn)
+        try:
+            connectpath = '//span[text() = "Connect"]/parent::div'
+            connectbtn = driver.find_element(by=By.XPATH, value=connectpath)
+            driver.execute_script("arguments[0].click();", connectbtn)
+            try:
+                sendreqbtnloc = '//button[@aria-label = "Send now"]'
+                sendreqbtn = driver.find_element(by=By.XPATH, value=sendreqbtnloc)
+                sendreqbtn.click()
+            except NoSuchElementException as Exception:
+                howyouknowbtnloc = '//button[contains(@aria-label, "We don\'t know each other")]'
+                howyouknowbtn = driver.find_element(by=By.XPATH, value=howyouknowbtnloc)
+                howyouknowbtn.click()
+                connectbtnloc = '//button[contains(@aria-label, "Connect")]'
+                connectbtn = driver.find_element(by=By.XPATH, value=connectbtnloc)
+                connectbtn.click()
+                time.sleep(3)
+                connectbtnloc = '//button[contains(@aria-label, "Connect")]'
+                connectbtn = driver.find_element(by=By.XPATH, value=connectbtnloc)
+                driver.execute_script("arguments[0].click();", connectbtn)
+        except NoSuchElementException as Exception:
+            connectbtnloc = 'div.pvs-profile-actions > button'
+            connectbtn = driver.find_element(by=By.CSS_SELECTOR, value=connectbtnloc)
+            driver.execute_script("arguments[0].click();", connectbtn)
         sendreqbtnloc = '//button[@aria-label = "Send now"]'
         sendreqbtn = driver.find_element(by=By.XPATH, value=sendreqbtnloc)
         sendreqbtn.click()
@@ -110,6 +130,3 @@ for i in profiles:
     # sendreqbtnloc = '//button[@aria-label = "Send now"]'
     # sendreqbtn = driver.find_element(by=By.XPATH, value=sendreqbtnloc)
     # sendreqbtn.click()
-    
-
-
