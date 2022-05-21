@@ -1,3 +1,0 @@
-web: python linkedin_leadgen.py
-
-worker: python linkedin_leadgen.py
