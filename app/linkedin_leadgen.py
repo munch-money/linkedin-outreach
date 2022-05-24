@@ -19,6 +19,9 @@ import time
 from userinfo import *
 from selenium import webdriver
 import os
+from selenium.webdriver.chrome.options import Options
+# chrome_options = Options()
+# chrome_options.add_experimental_option("detach", True)
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -29,7 +32,7 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), c
 
 print("initialising webdriver")
 # create webdriver object
-# driver = webdriver.Chrome('/Users/rahulmathur/.wdm/drivers/chromedriver/mac64_m1/100.0.4896.60/chromedriver 2')
+# driver = webdriver.Chrome('/Users/rahulmathur/.wdm/drivers/chromedriver/mac64_m1/100.0.4896.60/chromedriver 2', chrome_options=chrome_options)
 
 driver.get("https://www.linkedin.com/")
 
@@ -52,6 +55,16 @@ password = "session_password"
 enterpw = driver.find_element(by=By.NAME, value=password)
 enterpw.send_keys(pw + Keys.ENTER)
 
+verificationtxt = '//h1[contains(text(), "Let\'s do a quick verification")]'
+verficationelem = driver.find_element(by=By.XPATH, value=verificationtxt)
+print(verficationelem.is_displayed())
+
+if str(verficationelem.is_displayed()) == "True":
+    print("verification required")
+    pin = input("Enter your PIN")
+    pininputloc = 'input.form__input--text'
+    inputelem = driver.find_element(by=By.CSS_SELECTOR, value=pininputloc)
+    inputelem.send_keys(pin + Keys.ENTER)
 print("logged into LinkedIn")
 
 driver.get("https://www.linkedin.com/in/rahul-mathur-74161284/")
