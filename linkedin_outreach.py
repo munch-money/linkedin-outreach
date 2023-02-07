@@ -28,8 +28,6 @@ driver.get("https://www.linkedin.com/")
 # id = "xxx@gmail.com"                  #edit login credentials before running script to login into your linkedin account
 # pw = "xxxxxx"
 
-id = "mathur.rahul.2501@gmail.com"                  #edit login credentials before running script to login into your linkedin account
-pw = "youcanthackme"
 
 print("logging into linkedin")
 # selects login field and enters credentials
